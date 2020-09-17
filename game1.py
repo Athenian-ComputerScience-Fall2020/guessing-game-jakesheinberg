@@ -16,17 +16,27 @@ answer=random.randint(0,10)
 
 guessnumber=0
 while guessnumber <5:
-    guess=int(input("Guess a number 1 through 10:  "))
+    try:
+        guess=int(input("Guess a number 1 through 10  or type '0' to quit: :  "))
+        guessnumber=guessnumber+1
+    except:
+        print("please pick a number 1 through 10")
     guessnumber=guessnumber+1
-    if guess==answer:
+    if guess == 0:
+        print("you have quit")
+        break
+       
+    elif guess==answer:
         print(f"You Got it on your {guessnumber} attempt!")
         break
-    elif guess<answer:
+    elif 0<guess<answer:
         print("Your number is too low.")
-    elif guess>answer:
+    elif 11>guess>answer:
         print("Your number is too high.")
     elif guess==5:
         print("I'm sorry, you are out of guesses.")
+    else:
+        print("Answer is out of range.")
 
 
 
