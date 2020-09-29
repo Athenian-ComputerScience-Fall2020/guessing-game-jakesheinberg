@@ -8,17 +8,17 @@ Use this file to write an "open" version of the game (no test code or defined fo
 "I'm sorry, you are out of guesses."
 
 '''
-# Collaborators: none
+# Collaborators: Megan
 import random
 def guessing_game():
     start_rang=int(input("What would you like the range to start at: "))
     end_rang=int(input("What would you like the range to end at: "))
-    choices=end_rang-start_rang+1
+    choices=end_rang-(start_rang+1)
     guesses_avail=int(input(f"There are {choices} numbers to guess from. How many guesses would you like: "))
     answer=random.randint(start_rang,end_rang+1)
 
-    guessnumber=0
-    while guessnumber <guesses_avail:
+    guessnumber=1
+    while guessnumber <guesses_avail-1:
         guess=(input(f"Guess a number between {start_rang} and {end_rang} or type 'done' to quit: :  "))
         try:
             guess=int(guess)
@@ -28,12 +28,11 @@ def guessing_game():
                 print("You have quit. Come again soon!")
                 break
             else:
-                print("Please pick a number 1 through 10")
+                guess=input(f"Please pick a number {start_rang} through {end_rang}:  ")
+                
 
-            print("please pick a number 1 through 10")
-        guessnumber=guessnumber+1
         if guess==answer:
-            print(f"You Got it on your {guessnumber} attempt!")
+            print(f"You Got it on attempt {guessnumber}!")
             break
         elif 0<guess<answer:
             print("Your number is too low.")
@@ -47,9 +46,6 @@ def guessing_game():
     playagain=playagain.upper()
     if playagain== "YES" or "YA":
         guessing_game()
-    else:
-        break
-
 
 
 guessing_game()
