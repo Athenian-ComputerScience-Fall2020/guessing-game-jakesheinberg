@@ -13,16 +13,15 @@ import random
 def guessing_game():
     start_rang=int(input("What would you like the range to start at: "))
     end_rang=int(input("What would you like the range to end at: "))
-    choices=end_rang-(start_rang+1)
+    choices=(end_rang+1)-(start_rang)
     guesses_avail=int(input(f"There are {choices} numbers to guess from. How many guesses would you like: "))
     answer=random.randint(start_rang,end_rang+1)
 
     guessnumber=1
-    while guessnumber <guesses_avail-1:
+    while guessnumber <=guesses_avail:
         guess=(input(f"Guess a number between {start_rang} and {end_rang} or type 'done' to quit: :  "))
         try:
             guess=int(guess)
-            guessnumber=guessnumber+1
         except:
             if guess=="done":
                 print("You have quit. Come again soon!")
@@ -36,15 +35,17 @@ def guessing_game():
             break
         elif 0<guess<answer:
             print("Your number is too low.")
+            guessnumber=guessnumber+1
         elif 11>guess>answer:
             print("Your number is too high.")
+            guessnumber=guessnumber+1
         elif guess==5:
             print("I'm sorry, you are out of guesses.")
         else:
             print("Answer is out of range.")
     playagain=input("Would you like to play again: ")
     playagain=playagain.upper()
-    if playagain== "YES" or "YA":
+    if playagain== "YES" or playagain=="YA":
         guessing_game()
 
 
