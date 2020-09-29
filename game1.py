@@ -43,13 +43,13 @@ def guessing_game():
             print("I'm sorry, you are out of guesses.")
         else:
             print("Answer is out of range.")
+    playagain=input("Would you like to play again: ")
+    playagain=playagain.upper()
+    if playagain== "YES" or "YA":
+        guessing_game()
+    else:
+        break
 
 
 
 guessing_game()
-playagain=input("Would you like to play again: ")
-playagain=playagain.upper()
-if playagain== "YES" or "YA":
-    guessing_game()
-else:
-    break
