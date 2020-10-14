@@ -13,18 +13,18 @@ import random
 def guessing_game():
     start_rang=int(input("What would you like the range to start at: "))
     end_rang=int(input("What would you like the range to end at: "))
-    choices=(end_rang+1)-(start_rang)
-    guesses_avail=int(input(f"There are {choices} numbers to guess from. How many guesses would you like: "))
-    answer=random.randint(start_rang,end_rang+1)
+    choices=(end_rang+1)-(start_rang) # used for print statement about how manu numbers to choose from
+    guesses_avail=int(input(f"There are {choices} numbers to guess from. How many guesses would you like: ")) #how many attempts
+    answer=random.randint(start_rang,end_rang+1) #sets value that should be guessed
 
     guessnumber=1
     while guessnumber <=guesses_avail:
         guess=(input(f"Guess a number between {start_rang} and {end_rang} or type 'done' to quit: :  "))
-        try:
+        try:#deals w string or float inputs
             guess=int(guess)
         except:
             if guess=="done":
-                print("You have quit. Come again soon!")
+                print("You have quit. Come again soon!") #quit game protocal
                 break
             else:
                 guess=input(f"Please pick a number {start_rang} through {end_rang}:  ")
@@ -44,7 +44,7 @@ def guessing_game():
         else:
             print("Answer is out of range.")
     playagain=input("Would you like to play again: ")
-    playagain=playagain.upper()
+    playagain=playagain.upper()#used to make it not case sensitive 
     if playagain== "YES" or playagain=="YA":
         guessing_game()
 
